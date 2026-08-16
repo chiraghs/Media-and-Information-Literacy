@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIL Nexus - UNESCO Youth Initiative 2026 Project Incubator</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="MIL Nexus is an interactive web-based media and information literacy incubator, featuring TruthCraft and SpotCheck prototypes for the UNESCO Youth Initiative 2026.">
+  <meta name="keywords" content="UNESCO, MIL, Media Literacy, Information Literacy, AI and MIL, Disinformation, Fact-Checking, Deepfake, SpotCheck, TruthCraft">
+  <meta name="author" content="UNESCO MIL Advocate Team">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Prevent Dark/Light FOUC -->
+  <meta name="color-scheme" content="dark light">
+  <script>
+    {
+      const colorScheme = localStorage.getItem("color-scheme") || "light";
+      document.documentElement.setAttribute("data-theme", colorScheme);
+      document.documentElement.style.colorScheme = colorScheme;
+    }
+  </script>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <!-- Custom Scroll Container -->
+  <div class="app-container">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside class="sidebar" id="app-sidebar">
+      <div class="brand">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="brand-text">
+          <h1>MIL Nexus</h1>
+          <span>UNESCO Initiative '26</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu" id="nav-menu">
+        <button class="nav-item active" data-tab="dashboard" id="btn-tab-dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>Dashboard Hub</span>
+        </button>
+        <button class="nav-item" data-tab="truthcraft" id="btn-tab-truthcraft">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          <span>TruthCraft Game</span>
+        </button>
+        <button class="nav-item" data-tab="spotcheck" id="btn-tab-spotcheck">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>SpotCheck Kit</span>
+        </button>
+        <button class="nav-item" data-tab="resources" id="btn-tab-resources">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5v-15z"/></svg>
+          <span>Resource Kits</span>
+        </button>
+        <button class="nav-item" data-tab="about" id="btn-tab-about">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>Diagnostic Check</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-badge" id="sidebar-user-badge">
+          <div class="avatar" id="avatar-display">M</div>
+          <div class="user-info">
+            <h4 id="user-name-display">Guest User</h4>
+            <p id="user-role-display">Individual Advocate</p>
+          </div>
+        </div>
+        <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+          <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <span id="theme-toggle-text">Light Mode</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top header (for search/notifications/etc) -->
+      <header class="top-header">
+        <div class="welcome-block">
+          <h2 id="top-title">Dashboard Hub</h2>
+          <p id="top-subtitle">Explore media literacy prototypes and register your project team.</p>
+        </div>
+        <div class="header-actions">
+          <div class="streak-counter card-glass" title="Days active fact-checking in a row">
+            <span class="fire-icon">🔥</span>
+            <span class="streak-text"><strong id="streak-num">1</strong> Day Streak</span>
+          </div>
+          <div class="score-badge card-glass">
+            <span>MIL Score:</span>
+            <strong id="mil-score-val">0</strong>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard View -->
+      <section class="tab-view active" id="view-dashboard">
+        
+        <!-- Welcome Hero Card -->
+        <div class="hero-card">
+          <div class="hero-content">
+            <span class="badge-pill">UNESCO Global Initiative</span>
+            <h2>Increase Your Media & Information Literacy (MIL)</h2>
+            <p>UNESCO's direct interactive sandbox to test your skills, detect synthetic media, verify EXIF source metadata, check headlines, and assess your media literacy score.</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" onclick="switchTab('truthcraft')">Launch TruthCraft Game</button>
+              <button class="btn btn-secondary" onclick="switchTab('spotcheck')">Scan Claim Statements</button>
+            </div>
+          </div>
+          <div class="hero-art-container">
+            <div class="cube-container">
+              <div class="cube">
+                <div class="face front">MIL</div>
+                <div class="face back">AI</div>
+                <div class="face left">TRUTH</div>
+                <div class="face right">VERIFY</div>
+                <div class="face top">UNESCO</div>
+                <div class="face bottom">2026</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-Column Quick Metrics -->
+        <div class="grid-3">
+          <div class="card card-glass text-center animate-card">
+            <div class="card-icon cyan-glow">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3>Disinformation Defense</h3>
+            <p>Test your lateral reading skills against chatbots and deepfake algorithms in <em>TruthCraft</em>.</p>
+            <span class="action-link" onclick="switchTab('truthcraft')">Play Scenario &rarr;</span>
+          </div>
+          
+          <div class="card card-glass text-center animate-card">
+            <div class="card-icon purple-glow">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <h3>SpotCheck Toolkit</h3>
+            <p>Input statements and extract structural credibility metrics, then export custom debunk card infographics.</p>
+            <span class="action-link" onclick="switchTab('spotcheck')">Scan Claims &rarr;</span>
+          </div>
+
+          <div class="card card-glass text-center animate-card">
+            <div class="card-icon emerald-glow">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>MIL Cohort Study Pass</h3>
+            <p>Assemble your study cohort (2–6 peers) to synchronize score metrics and generate active training passes.</p>
+            <span class="action-link" onclick="scrollToRegisterForm()">Setup Study Group &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Two Column Hub Sections: Registration and Roadmap -->
+        <div class="grid-2">
+          
+          <!-- Interactive Team Setup & Registration Card -->
+          <div class="card card-glass registration-card" id="register-section">
+            <div class="card-header">
+              <h3>Step 1: Setup Your MIL Study Group</h3>
+              <p>UNESCO encourages peer learning. Register your cohort (2 to 6 members, aged 18-30) to track progress.</p>
+            </div>
+            
+            <form id="team-register-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="team-name">Team Name</label>
+                  <input type="text" id="team-name" placeholder="Enter team name" required>
+                </div>
+                <div class="form-group">
+                  <label for="focus-track">Challenge Focus Area</label>
+                  <select id="focus-track" required>
+                    <option value="" disabled selected>Select focus track</option>
+                    <option value="AI and MIL">AI and MIL (AI Challenges)</option>
+                    <option value="MIL Education">MIL Education (Digital Learning)</option>
+                    <option value="Community Impact">Community Impact (Local Empowerment)</option>
+                    <option value="Youth Engagement">Youth Engagement (Youth Change Agents)</option>
+                    <option value="Open Track">Open Track (Alternative Solutions)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="project-modality">Project Format / Modality</label>
+                  <select id="project-modality" required>
+                    <option value="" disabled selected>Select project format</option>
+                    <option value="Games">Games (Web / Mobile / Physical)</option>
+                    <option value="Applications / Websites">Applications / Websites</option>
+                    <option value="Radio / Podcasts">Radio programmes / Podcasts</option>
+                    <option value="Artistic Work">Artistic Work (Comics, Videos, Documentaries)</option>
+                    <option value="Educational Toolkits">Educational Toolkits</option>
+                    <option value="Youth Campaigns">Youth organization campaigns</option>
+                    <option value="Community Interventions">Community-based interventions</option>
+                    <option value="Other Modalities">Other creative modalities</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Team Members Container -->
+              <div class="members-list-container">
+                <label>Team Members (Aged 18–30, Min 2, Max 6)</label>
+                <div id="members-inputs" class="members-inputs">
+                  <!-- Inputs dynamically added by JS -->
+                </div>
+                <button type="button" class="btn btn-secondary-outline btn-xs" id="add-member-btn">
+                  + Add Member
+                </button>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="save-team-btn">Generate Team Passes</button>
+              </div>
+            </form>
+
+            <!-- Dynamic Pass Render (Hidden until registered) -->
+            <div id="registration-pass-container" class="pass-preview-container hidden">
+              <div class="pass-card" id="pass-card-3d">
+                <div class="pass-front">
+                  <div class="pass-hdr">
+                    <span class="pass-org">UNESCO MIL WEEK 2026</span>
+                    <span class="pass-badge">DELEGATE</span>
+                  </div>
+                  <div class="pass-body">
+                    <div class="pass-user-art">
+                      <div class="pass-glare"></div>
+                      <span id="pass-team-letter">T</span>
+                    </div>
+                    <div class="pass-user-info">
+                      <h4 id="pass-team-title">Alpha Team</h4>
+                      <p id="pass-track-title">AI and MIL Track</p>
+                      <p id="pass-modality-title" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500; margin-top: 2px;">Format: Applications / Websites</p>
+                      <div class="pass-stats">
+                        <div>
+                          <span>Members</span>
+                          <strong id="pass-members-count">3</strong>
+                        </div>
+                        <div>
+                          <span>Status</span>
+                          <strong class="emerald-text">Registered</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pass-footer">
+                    <div class="qr-code">
+                      <!-- Simulated SVG QR code -->
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="7" y1="7" x2="7" y2="7"/><line x1="17" y1="7" x2="17" y2="7"/><line x1="7" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="17" y2="17"/></svg>
+                    </div>
+                    <div class="pass-meta">
+                      <span>ID: MIL-26-984A</span>
+                      <span>Thessaloniki Host</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="pass-control-actions">
+                <button type="button" class="btn btn-primary btn-sm" id="btn-print-pass">
+                  Print / Save Study Pass
+                </button>
+                <button type="button" class="btn btn-secondary-outline btn-sm" id="btn-edit-team">
+                  Edit Profile
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Interactive Roadmap/Timeline -->
+          <div class="card card-glass roadmap-card">
+            <div class="card-header">
+              <h3>Media Literacy Skill Check Roadmap</h3>
+              <p>Track your achievement path and earn your dynamic certificate.</p>
+            </div>
+            
+            <div class="roadmap-timeline">
+              <div class="timeline-item completed">
+                <div class="timeline-icon">1</div>
+                <div class="timeline-content">
+                  <h4>Step 1: Configure Study Group</h4>
+                  <p>Register your study group cohort (2–6 peers, ages 18–30) to save scores.</p>
+                  <span class="timeline-meta" id="roadmap-reg-status">Status: Pending Pass Generation</span>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-icon">2</div>
+                <div class="timeline-content">
+                  <h4>Step 2: Interactive Prebunking (TruthCraft)</h4>
+                  <p>Decode synthetic video artifacts, deepfakes, and check source timestamps.</p>
+                  <button class="btn btn-xs btn-primary-outline mt-xs" onclick="switchTab('truthcraft')">Launch TruthCraft</button>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-icon">3</div>
+                <div class="timeline-content">
+                  <h4>Step 3: Auditing Claims (SpotCheck Scanner)</h4>
+                  <p>Heuristically scan viral statements for clickbait, emotional bias, and numbers.</p>
+                  <button class="btn btn-xs btn-primary-outline mt-xs" onclick="switchTab('spotcheck')">Scan Statements</button>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-icon">4</div>
+                <div class="timeline-content">
+                  <h4>Step 4: Prompt Engineering & Feedback (Jury Diagnostic)</h4>
+                  <p>Draft a fact-check report or campaign statement to see juror analysis scores.</p>
+                  <button class="btn btn-xs btn-primary-outline mt-xs" onclick="switchTab('about')">Run Diagnostic Check</button>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-icon">5</div>
+                <div class="timeline-content">
+                  <h4>Step 5: Dynamic Achievement Certificate</h4>
+                  <p>Gain points across the sandbox tasks and print your UNESCO MIL Training Certificate.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- TruthCraft Game View -->
+      <section class="tab-view" id="view-truthcraft">
+        <div class="game-layout">
+          
+          <!-- Game Main Column -->
+          <div class="game-viewport card-glass">
+            
+            <!-- Game Start / Intro Screen -->
+            <div class="game-screen" id="game-screen-intro">
+              <div class="game-intro-content text-center">
+                <div class="badge-pill pulse-emerald mb-sm">Prototype Interactive Narrative</div>
+                <h2>TruthCraft: The Disinformation Defense</h2>
+                <p class="max-w-md">Play the role of Maya, a youth reporter investigating a coordinated deepfake campaign in her community. Make decisions, decode synthetic media, and defend source integrity.</p>
+                
+                <div class="game-meta-row">
+                  <div>
+                    <span>Complexity</span>
+                    <strong>Medium</strong>
+                  </div>
+                  <div>
+                    <span>Pillars Covered</span>
+                    <strong>AI & MIL, Media Bias</strong>
+                  </div>
+                  <div>
+                    <span>Estimated Time</span>
+                    <strong>5-7 mins</strong>
+                  </div>
+                </div>
+
+                <button class="btn btn-primary btn-lg" id="btn-start-game">Enter Story Scenarios</button>
+              </div>
+            </div>
+
+            <!-- Branching Narrative Screen -->
+            <div class="game-screen hidden" id="game-screen-story">
+              <div class="story-progress-bar">
+                <div class="story-progress-fill" id="story-progress-fill" style="width: 10%;"></div>
+              </div>
+              <div class="story-layout">
+                <!-- Character Avatar Left -->
+                <div class="story-character">
+                  <div class="character-circle" id="char-avatar">M</div>
+                  <strong id="char-name">Maya</strong>
+                  <span class="role-text" id="char-role">Investigator</span>
+                </div>
+                <!-- Dialog bubble right -->
+                <div class="story-bubble-container">
+                  <div class="story-dialog">
+                    <p id="story-text">Loading narrative...</p>
+                  </div>
+                  <!-- Inline visual media (e.g. fake image, EXIF table, etc) -->
+                  <div id="story-media-box" class="story-media-box hidden"></div>
+                  <!-- Option Buttons -->
+                  <div class="story-choices" id="story-choices-box">
+                    <!-- Added by JS -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Puzzle 1: Deepfake Spotter Screen -->
+            <div class="game-screen hidden" id="game-screen-puzzle-df">
+              <div class="puzzle-header text-center">
+                <span class="badge-pill mb-xs">Interactive Challenge</span>
+                <h3>Deepfake Image Investigator</h3>
+                <p>Analyse the two profiles. Find the AI-generated headshot by spotting synthetic artifacts.</p>
+              </div>
+              <div class="puzzle-columns">
+                <!-- Photo A -->
+                <div class="puzzle-card" id="df-card-a">
+                  <div class="img-wrapper">
+                    <!-- We will dynamically create canvas details for artifacts -->
+                    <div class="placeholder-img avatar-df-a"></div>
+                  </div>
+                  <div class="puzzle-card-body">
+                    <h4>Profile A: Sarah K.</h4>
+                    <p>Community Organizer. Symmetric ears, clean glasses reflections, realistic hair stranding.</p>
+                    <button class="btn btn-secondary-outline btn-sm btn-block" onclick="selectDeepfake('A')">Identify Profile A as AI</button>
+                  </div>
+                </div>
+                <!-- Photo B -->
+                <div class="puzzle-card" id="df-card-b">
+                  <div class="img-wrapper">
+                    <div class="placeholder-img avatar-df-b"></div>
+                  </div>
+                  <div class="puzzle-card-body">
+                    <h4>Profile B: Mark T.</h4>
+                    <p>Local Advocate. Mismatched earrings, warped glasses bridge, floating hair fragments, repeating background pixels.</p>
+                    <button class="btn btn-secondary-outline btn-sm btn-block" onclick="selectDeepfake('B')">Identify Profile B as AI</button>
+                  </div>
+                </div>
+              </div>
+              <div class="puzzle-feedback hidden" id="df-feedback-box">
+                <p id="df-feedback-text"></p>
+                <button class="btn btn-primary" id="btn-next-from-df">Proceed with Investigation</button>
+              </div>
+            </div>
+
+            <!-- Puzzle 2: Metadata Inspector Screen -->
+            <div class="game-screen hidden" id="game-screen-puzzle-exif">
+              <div class="puzzle-header text-center">
+                <span class="badge-pill mb-xs">Metadata Forensic Challenge</span>
+                <h3>EXIF Metadata Inspector</h3>
+                <p>This image claims to be taken during yesterday's local protest. Inspect the EXIF table data to verify authenticity.</p>
+              </div>
+              
+              <div class="metadata-forensic-grid">
+                <!-- Visual Image -->
+                <div class="protest-image-container">
+                  <div class="protest-img-placeholder"></div>
+                  <span class="caption-text">Claimed Image: "Protest in City Centre Yesterday"</span>
+                </div>
+                <!-- EXIF Table -->
+                <div class="exif-table-container card-glass">
+                  <h4>EXIF Tags</h4>
+                  <table class="exif-table">
+                    <thead>
+                      <tr>
+                        <th>Tag Name</th>
+                        <th>Data Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Camera Model</td>
+                        <td>Sony Alpha 7R V</td>
+                      </tr>
+                      <tr class="highlight-row">
+                        <td>Original Timestamp</td>
+                        <td>2024:10-12 14:32:01 <span class="flag-indicator">⚠️ Out of Date</span></td>
+                      </tr>
+                      <tr>
+                        <td>GPS Coordinates</td>
+                        <td>40°38'15"N, 22°56'24"E (Thessaloniki)</td>
+                      </tr>
+                      <tr class="highlight-row">
+                        <td>Software Signature</td>
+                        <td>Adobe Photoshop 25.1 (Windows) <span class="flag-indicator">⚠️ Edited</span></td>
+                      </tr>
+                      <tr>
+                        <td>Aperture / Exposure</td>
+                        <td>f/2.8, 1/250s, ISO 400</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="metadata-assessment">
+                <h4>What is your assessment of this photo?</h4>
+                <div class="assessment-choices">
+                  <button class="btn btn-secondary-outline btn-block text-left" onclick="assessMetadata(1)">
+                    <strong>A. Authentic:</strong> The data confirms the image details are clean.
+                  </button>
+                  <button class="btn btn-secondary-outline btn-block text-left" onclick="assessMetadata(2)">
+                    <strong>B. Outdated / Repurposed:</strong> The EXIF time tag reveals the photo is 2 years old and edited via Photoshop.
+                  </button>
+                  <button class="btn btn-secondary-outline btn-block text-left" onclick="assessMetadata(3)">
+                    <strong>C. Spoofed GPS:</strong> The coordinates point to Thessaloniki, which is impossible.
+                  </button>
+                </div>
+              </div>
+
+              <div class="puzzle-feedback hidden" id="exif-feedback-box">
+                <p id="exif-feedback-text"></p>
+                <button class="btn btn-primary" id="btn-next-from-exif">Continue Mission</button>
+              </div>
+            </div>
+
+            <!-- Puzzle 3: Drag-and-Drop Bias Balancer Screen -->
+            <div class="game-screen hidden" id="game-screen-puzzle-bias">
+              <div class="puzzle-header text-center">
+                <span class="badge-pill mb-xs">Pillar: MIL Education</span>
+                <h3>Headline Bias Balancer</h3>
+                <p>Rewrite this sensationalist, clickbait headline to be neutral and objectively verified.</p>
+              </div>
+              
+              <div class="bias-sandbox">
+                <div class="original-headline card-glass">
+                  <span>Sensational Headline:</span>
+                  <h4>"SHOCKING Coverup Exposed! Fake AI Robots Stealing ALL Local Tech Jobs Overnight!"</h4>
+                </div>
+                
+                <div class="words-container" id="draggable-words">
+                  <!-- JS will spawn draggable text tags -->
+                </div>
+                
+                <div class="dropzone-container">
+                  <span>Your Objective Headline:</span>
+                  <div class="dropzone" id="headline-dropzone">
+                    <p class="drop-placeholder">Drag and drop words here in order...</p>
+                  </div>
+                </div>
+
+                <div class="sandbox-controls">
+                  <button class="btn btn-secondary-outline btn-sm" id="btn-reset-bias">Reset Layout</button>
+                  <button class="btn btn-primary btn-sm" id="btn-submit-bias">Verify Headline Integrity</button>
+                </div>
+              </div>
+
+              <div class="puzzle-feedback hidden" id="bias-feedback-box">
+                <p id="bias-feedback-text"></p>
+                <button class="btn btn-primary" id="btn-next-from-bias">Finish TruthCraft</button>
+              </div>
+            </div>
+
+            <!-- Game Conclusion Screen / Certificate Generator -->
+            <div class="game-screen hidden" id="game-screen-cert">
+              <div class="cert-completion text-center">
+                <span class="badge-pill mb-xs">Milestone Achieved</span>
+                <h2>Disinformation Mission Completed!</h2>
+                <p>You successfully navigated the narrative, exposed synthetic disinformation, and built an objective news feed. You scored <strong id="game-final-score">100</strong> points.</p>
+
+                <!-- Dynamic Certificate Frame -->
+                <div class="cert-border" id="printable-cert">
+                  <div class="cert-inner">
+                    <div class="cert-logo">
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                      <h4>UNESCO MIL INNOVATION</h4>
+                    </div>
+                    <div class="cert-title">Certificate of Achievement</div>
+                    <p class="cert-text">This certifies that the delegate of</p>
+                    <h3 class="cert-name" id="cert-user-name">Advocate Team Member</h3>
+                    <p class="cert-text">has successfully completed the interactive core modules of</p>
+                    <strong class="cert-program">TruthCraft: Disinformation Defense & AI Media Literacy</strong>
+                    <p class="cert-text">representing an active development prototype contribution for Global MIL Week 2026.</p>
+                    
+                    <div class="cert-footer">
+                      <div class="cert-sign">
+                        <span class="sign-line"></span>
+                        <span>UNESCO MIL Secretariat</span>
+                      </div>
+                      <div class="cert-date">
+                        <strong id="cert-date-val">August 2026</strong>
+                        <span>Verification Stamp</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cert-actions">
+                  <button class="btn btn-primary" id="btn-print-cert">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    Print/Save Certificate
+                  </button>
+                  <button class="btn btn-secondary-outline" onclick="resetGame()">Replay Simulator</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+          <!-- Game Side Panel (Leaderboard / Score stats) -->
+          <aside class="game-sidebar card-glass">
+            <h3>Mission Status</h3>
+            <div class="mission-stat">
+              <span>Current Scenario</span>
+              <strong id="game-status-scenario">Intro</strong>
+            </div>
+            <div class="mission-stat">
+              <span>Confidence Score</span>
+              <strong id="game-status-score">0</strong>
+            </div>
+            
+            <div class="leaderboard-section">
+              <h4>Milestones</h4>
+              <ul class="leaderboard-list">
+                <li id="milestone-story" class="pending">
+                  <span class="dot"></span>
+                  <span>1. Investigate Narrative</span>
+                </li>
+                <li id="milestone-df" class="pending">
+                  <span class="dot"></span>
+                  <span>2. Deepfake Artifact Audit</span>
+                </li>
+                <li id="milestone-exif" class="pending">
+                  <span class="dot"></span>
+                  <span>3. EXIF Data Forensic</span>
+                </li>
+                <li id="milestone-bias" class="pending">
+                  <span class="dot"></span>
+                  <span>4. Headline Balancer</span>
+                </li>
+              </ul>
+            </div>
+          </aside>
+
+        </div>
+      </section>
+
+      <!-- SpotCheck Utility View -->
+      <section class="tab-view" id="view-spotcheck">
+        <div class="grid-2">
+          
+          <!-- SpotCheck Scanner Column -->
+          <div class="card card-glass">
+            <div class="card-header">
+              <h3>SpotCheck Analyzer Panel</h3>
+              <p>Type or paste news headers, claims, or social posts to simulate algorithmic integrity evaluation.</p>
+            </div>
+            
+            <div class="claim-scanner-input">
+              <div class="form-group">
+                <label for="claim-input-box">Enter Media Statement</label>
+                <textarea id="claim-input-box" rows="4" placeholder="Example: SHOCKING: Government coverup revealed, massive new health mandates implemented overnight without approval!"></textarea>
+              </div>
+              <div class="scanner-button-row">
+                <button class="btn btn-secondary-outline btn-sm" onclick="insertSampleClaim(1)">Sensational Sample</button>
+                <button class="btn btn-secondary-outline btn-sm" onclick="insertSampleClaim(2)">Objective News Sample</button>
+                <button class="btn btn-primary btn-sm" id="btn-run-scan">Audit Claims &rarr;</button>
+              </div>
+            </div>
+
+            <!-- Dynamic Scan Metrics Grid -->
+            <div id="scan-results-box" class="scan-results-container hidden">
+              <h4>Scanned Credibility Metrics</h4>
+              <div class="metrics-radar-grid">
+                
+                <div class="gauge-card">
+                  <span class="gauge-label">Bias Risk</span>
+                  <div class="gauge-circle" id="gauge-bias" style="--value: 75%;">
+                    <div class="gauge-inner"><span id="gauge-bias-val">75%</span></div>
+                  </div>
+                  <p class="gauge-desc">Calculates extreme emotional adjectives.</p>
+                </div>
+                
+                <div class="gauge-card">
+                  <span class="gauge-label">Clickbait Index</span>
+                  <div class="gauge-circle" id="gauge-clickbait" style="--value: 90%;">
+                    <div class="gauge-inner"><span id="gauge-clickbait-val">90%</span></div>
+                  </div>
+                  <p class="gauge-desc">Measures punctuation, CAPS, and triggers.</p>
+                </div>
+
+                <div class="gauge-card">
+                  <span class="gauge-label">Source Validity</span>
+                  <div class="gauge-circle" id="gauge-source" style="--value: 20%;">
+                    <div class="gauge-inner"><span id="gauge-source-val">20%</span></div>
+                  </div>
+                  <p class="gauge-desc">Checks citation density and verified link references.</p>
+                </div>
+              </div>
+
+              <!-- Heuristic Breakdown -->
+              <div class="flag-breakdown-list">
+                <h5>Heuristic Detection Flags</h5>
+                <ul id="scan-flags-list" class="flags-list">
+                  <!-- Inserted by JS -->
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- SpotCheck Infographic Builder Column -->
+          <div class="card card-glass flex-column justify-between">
+            <div class="card-header">
+              <h3>Debunk Infographic Creator</h3>
+              <p>Design visual debunk cards using verified data templates to combat rumor loops in community chats.</p>
+            </div>
+
+            <div class="infographic-builder-grid">
+              <!-- Inputs Left -->
+              <div class="infographic-inputs">
+                <div class="form-group">
+                  <label for="info-claim">Claim Title</label>
+                  <input type="text" id="info-claim" value="Robots steal tech jobs overnight" placeholder="Summary of the rumor claim">
+                </div>
+                <div class="form-group">
+                  <label for="info-verdict">Verification Verdict</label>
+                  <select id="info-verdict" onchange="updateInfographicTheme()">
+                    <option value="FALSE" selected>FALSE (Fully Debunked)</option>
+                    <option value="MISLEADING">MISLEADING (Out of Context)</option>
+                    <option value="VERIFIED">VERIFIED (Accurate & Documented)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="info-bullets">Debunk Bullet Points (One per line)</label>
+                  <textarea id="info-bullets" rows="4" placeholder="Point 1: Industry data shows tech hiring grew 4% last month.
+Point 2: The rumor stems from a satirical post on a social forum.
+Point 3: Independent fact-checkers confirm no such mandate exists."></textarea>
+                </div>
+              </div>
+              
+              <!-- Infographic Render Card Right -->
+              <div class="infographic-canvas-preview">
+                <div class="debunk-card theme-false" id="debunk-card-render">
+                  <div class="card-inner-design">
+                    <div class="debunk-badge" id="info-render-verdict">FALSE</div>
+                    <div class="debunk-claim-box">
+                      <span>RUMOR CLAIM:</span>
+                      <h4 id="info-render-claim">Robots steal tech jobs overnight</h4>
+                    </div>
+                    <div class="debunk-divider"></div>
+                    <div class="debunk-details">
+                      <span>VERIFIED FACTS:</span>
+                      <ul class="debunk-list-items" id="info-render-bullets">
+                        <li>Industry data shows tech hiring grew 4% last month.</li>
+                        <li>The rumor stems from a satirical post on a social forum.</li>
+                        <li>Independent fact-checkers confirm no such mandate exists.</li>
+                      </ul>
+                    </div>
+                    <div class="debunk-card-footer">
+                      <span class="source-tag">MIL Nexus SpotCheck Campaign</span>
+                      <span class="badge-tag">UNESCO 2026 Theme</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="infographic-actions pt-sm">
+              <button class="btn btn-primary btn-block" id="btn-export-infographic">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export & Print Debunk Card
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Resource Kits View -->
+      <section class="tab-view" id="view-resources">
+        
+        <!-- Tracks Header -->
+        <div class="section-title">
+          <h3>Interactive Educational Resource Kits</h3>
+          <p>Downloadable guidelines, blueprints, and facilitation toolkits matching the other Youth MIL concepts.</p>
+        </div>
+
+        <div class="grid-2">
+          
+          <!-- CivicVoice Kit -->
+          <div class="card card-glass border-glow-blue flex-column justify-between">
+            <div>
+              <div class="card-badge bg-blue-tint">Concept 2: Community Radio</div>
+              <h3 class="mt-sm">CivicVoice AI & Local Pulse</h3>
+              <p class="text-sm">A downloadable audio toolkit that equips community radio stations and youth clubs with interview scripts and verification checklist frameworks.</p>
+              
+              <div class="blueprint-summary mt-md">
+                <h4>Toolkit Components:</h4>
+                <ul class="bullet-list text-sm">
+                  <li><strong>Local Rumor Log:</strong> Log sheet templates for community reporters to document regional health or election rumors.</li>
+                  <li><strong>Interview Guideline Script:</strong> Step-by-step interview templates to guide conversations with elders or local experts safely.</li>
+                  <li><strong>Pre-Production Verification Checklist:</strong> A 5-point audit template (SIFT guidelines) before broadcasting claims live.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card-footer-action pt-md">
+              <a href="#" class="btn btn-secondary-outline btn-block text-center" id="btn-download-civicvoice">
+                Download Radio PDF Blueprint (1.8 MB)
+              </a>
+            </div>
+          </div>
+
+          <!-- Echo Chamber Escape Kit -->
+          <div class="card card-glass border-glow-purple flex-column justify-between">
+            <div>
+              <div class="card-badge bg-purple-tint">Concept 4: Facilitator Guide</div>
+              <h3 class="mt-sm">Echo Chamber Escape: Teacher Guide</h3>
+              <p class="text-sm">A facilitation guide designed for schools and youth clubs to accompany the Choose-Your-Own-Adventure interactive documentary series.</p>
+              
+              <div class="blueprint-summary mt-md">
+                <h4>Discussion Modules:</h4>
+                <ul class="bullet-list text-sm">
+                  <li><strong>Module 1: The Echo Chamber Effect</strong> (45 mins) - Explores how social algorithms isolate perspectives and build confirmation bias.</li>
+                  <li><strong>Module 2: Algorithmic Targeted Feeds</strong> (45 mins) - Investigates sponsored political posts, bot networks, and psychological targeting.</li>
+                  <li><strong>Module 3: Lateral Reading Workshop</strong> (60 mins) - Practicing cross-checking sources across browser tabs.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card-footer-action pt-md">
+              <a href="#" class="btn btn-secondary-outline btn-block text-center" id="btn-download-echochamber">
+                Download Classroom Kit PDF (2.4 MB)
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- About/Initiative Info View -->
+      <section class="tab-view" id="view-about">
+        
+        <!-- Core Challenge Track Details -->
+        <div class="card card-glass">
+          <div class="card-header text-center">
+            <span class="badge-pill mb-xs">UNESCO MIL Diagnostic Simulator</span>
+            <h3>Diagnostic Skills Assessment & Expert Feedback</h3>
+            <p class="max-w-md">Draft a fact-check statement, campaign brief, or media analysis report below and click Simulate to receive dynamic evaluation feedback from our simulated expert panels.</p>
+          </div>
+
+          <div class="about-grid">
+            
+            <!-- Details Left -->
+            <div class="details-text-block">
+              <h4>Media Literacy Core Guidelines</h4>
+              <p class="text-sm text-muted">To increase Media & Information Literacy (MIL) effectively, your fact-checks, campaigns, and reports should focus on the following guidelines:</p>
+              <ul class="bullet-list text-sm mt-sm">
+                <li><strong>Factual Rigor:</strong> Cross-reference all source claims laterally. Avoid relying only on visual elements.</li>
+                <li><strong>Structural Clarity:</strong> Present claims objectively. Translate sensationalist clickbait headlines to neutral text.</li>
+                <li><strong>Target Inclusion:</strong> Optimize media content accessibility for physically challenged and low-connectivity users.</li>
+              </ul>
+
+              <h4 class="mt-md">Skills Audited by Jurors</h4>
+              <div class="tracks-card-list">
+                <div class="track-info-item">
+                  <strong>🤖 Algorithmic Literacy:</strong>
+                  <p>Understanding how social media platforms extract personal data and manipulate content visibility.</p>
+                </div>
+                <div class="track-info-item">
+                  <strong>🛡️ Cognitive Prebunking:</strong>
+                  <p>Developing active psychological inoculation techniques to detect deepfakes, bot accounts, and media biases.</p>
+                </div>
+                <div class="track-info-item">
+                  <strong>📢 Active Citizenship:</strong>
+                  <p>Moving from passive consumption of media toward community interventions, toolkits, and podcasts.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel Sandbox Right: 3-Expert Jury Evaluation Simulator -->
+            <div class="card-glass border-glow-teal jury-box">
+              <div class="card-header">
+                <span class="badge-pill pulse-teal mb-xs">Interactive Sandbox</span>
+                <h4>3-Expert Jury Simulator</h4>
+                <p class="text-xs">Submit a mock project profile and see how three international experts rate your proposal against the official evaluation criteria.</p>
+              </div>
+
+              <div class="jury-form-section">
+                <div class="form-group">
+                  <label for="jury-project-title">Project Title</label>
+                  <input type="text" id="jury-project-title" value="MIL Nexus Portal" placeholder="E.g., TruthCraft Disinformation Sandbox">
+                </div>
+                <div class="form-group">
+                  <label for="jury-project-desc">Problem Statement & Solution (Concise)</label>
+                  <textarea id="jury-project-desc" rows="3" placeholder="Explain what problem your project solves and how it integrates MIL principles.">MIL Nexus is a web incubator resolving AI deepfakes and clickbait algorithms for local student groups by providing playable games and rapid infographic tools.</textarea>
+                </div>
+                <button class="btn btn-primary btn-block btn-sm" id="btn-submit-jury">Simulate Expert Evaluation</button>
+              </div>
+
+              <!-- Jury Results Rendering -->
+              <div id="jury-results-box" class="jury-results-rendering hidden mt-md">
+                <h5>Expert Consensus Verdict</h5>
+                
+                <div class="jury-average-score">
+                  <span class="average-label">Consensus Score</span>
+                  <div class="score-circle">
+                    <span id="jury-consensus-score">8.5</span>
+                    <small>/ 10</small>
+                  </div>
+                </div>
+
+                <div class="criteria-scores-list">
+                  <div class="crit-row">
+                    <span>Theme Consistency:</span>
+                    <strong id="score-theme">9/10</strong>
+                  </div>
+                  <div class="crit-row">
+                    <span>Presentation Clarity:</span>
+                    <strong id="score-clarity">8/10</strong>
+                  </div>
+                  <div class="crit-row">
+                    <span>Innovation & Creativity:</span>
+                    <strong id="score-innovation">9/10</strong>
+                  </div>
+                  <div class="crit-row">
+                    <span>Feasibility & Sustainability:</span>
+                    <strong id="score-feasibility">8/10</strong>
+                  </div>
+                  <div class="crit-row">
+                    <span>Impact & Inclusion:</span>
+                    <strong id="score-impact">8.5/10</strong>
+                  </div>
+                </div>
+
+                <!-- Written Reviews from 3 Jurors -->
+                <div class="juror-reviews">
+                  <div class="review-bubble">
+                    <strong>Juror 1 (Europe Office):</strong>
+                    <p id="juror-1-text">"Excellent design. The implementation of working prototypes demonstrates great feasibility and aligns perfectly with the 2026 AI theme."</p>
+                  </div>
+                  <div class="review-bubble">
+                    <strong>Juror 2 (Latin America Office):</strong>
+                    <p id="juror-2-text">"The SpotCheck card sharing feature targets community group chats, which has massive localized impact potentials."</p>
+                  </div>
+                  <div class="review-bubble">
+                    <strong>Juror 3 (Asia-Pacific Office):</strong>
+                    <p id="juror-3-text">"The drag-and-drop headline balancer is an excellent education format, though video pitch elements must remain concise."</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Scientific & Research Foundations -->
+          <div class="research-foundations-section mt-lg">
+            <h4 class="section-title"><span class="badge-pill mb-xs">Scientific Base</span> Empirical Foundations & Research Library</h4>
+            <p class="text-secondary mb-md">Our MIL Nexus platform translates academic media studies and experimental findings into working digital prototypes. Explore the primary research foundations backing each module below:</p>
+            
+            <div class="research-grid">
+              
+              <div class="research-card">
+                <div class="research-icon">🔍</div>
+                <div class="research-content">
+                  <h5>Lateral Reading & Heuristics</h5>
+                  <span class="research-citation">Wineburg & McGrew (2019)</span>
+                  <p class="text-xs text-muted">Demonstrates that expert fact-checkers evaluate unfamiliar sources by opening new tabs to cross-reference claims (lateral reading) rather than analyzing the site's layout. This backs our <strong>SpotCheck Kit</strong> verification flow.</p>
+                </div>
+              </div>
+
+              <div class="research-card">
+                <div class="research-icon">⚖️</div>
+                <div class="research-content">
+                  <h5>Civic Reasoning & Biases</h5>
+                  <span class="research-citation">Kahne & Bowyer (2017)</span>
+                  <p class="text-xs text-muted">Investigates motivated reasoning and political polarization among youth. Finding that media literacy education mitigates these biases, backing our classroom guides and checklists.</p>
+                </div>
+              </div>
+
+              <div class="research-card">
+                <div class="research-icon">🛡️</div>
+                <div class="research-content">
+                  <h5>Psychological Inoculation</h5>
+                  <span class="research-citation">Roozenbeek & van der Linden (2019)</span>
+                  <p class="text-xs text-muted">Exposing individuals to micro-doses of disinformation tactics (like deepfakes and clickbait) builds mental antibodies. Backs the active puzzles in our <strong>TruthCraft Game</strong>.</p>
+                </div>
+              </div>
+
+              <div class="research-card">
+                <div class="research-icon">📢</div>
+                <div class="research-content">
+                  <h5>Youth Participatory Politics</h5>
+                  <span class="research-citation">Mihailidis & Thevenin (2013)</span>
+                  <p class="text-xs text-muted">Establishes media literacy as a core competency for active citizenship, shifting youth from protective consumers to active creators via production tools. Backs our <strong>Studio</strong> templates.</p>
+                </div>
+              </div>
+
+              <div class="research-card">
+                <div class="research-icon">🌐</div>
+                <div class="research-content">
+                  <h5>Civic Media Ecologies</h5>
+                  <span class="research-citation">Nichols & LeBlanc (2021)</span>
+                  <p class="text-xs text-muted">Critiques representational literacy in favor of ecological mapping, examining platform layers (The Stack) and digital extraction. Backs our metadata and network tracking tools.</p>
+                </div>
+              </div>
+
+              <div class="research-card">
+                <div class="research-icon">🌍</div>
+                <div class="research-content">
+                  <h5>Cross-Cultural Prebunking</h5>
+                  <span class="research-citation">Roozenbeek, van der Linden & Nygren (2020)</span>
+                  <p class="text-xs text-muted">A study of 5,061 participants proving that active gameplay interventions boost psychological immunity against fake news across diverse languages. Backs our <strong>TruthCraft</strong> layout.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- PDF Download Links -->
+            <div class="research-pdf-downloads mt-md">
+              <h5>📥 Download Compiled Technical Briefs (PDF)</h5>
+              <div class="pdf-btn-row">
+                <a href="../analytical_reasoning.pdf" target="_blank" class="btn btn-secondary-outline btn-sm">
+                  📄 Analytical Reasoning Study
+                </a>
+                <a href="../research_foundations.pdf" target="_blank" class="btn btn-secondary-outline btn-sm">
+                  📄 MIL Scientific Foundations
+                </a>
+                <a href="../prebunking.pdf" target="_blank" class="btn btn-secondary-outline btn-sm">
+                  📄 Inoculation & Prebunking Study
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Greece Travel / Voices Festival section -->
+          <div class="greece-travel-banner mt-lg">
+            <div class="banner-overlay"></div>
+            <div class="banner-content">
+              <span class="banner-tag">Grand Prize Details</span>
+              <h3>Win a Fully Funded Trip to Thessaloniki, Greece 🇬🇷</h3>
+              <p>The four selected winning teams will be sponsored by UNESCO to attend the <strong>Voices European Festival of Journalism and Media Freedom</strong> from 26–28 November 2026. UNESCO covers flight, hotel accommodation, and meals for 2 delegates per team to present their project to global policymakers and experts.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- External JS -->
+  <script src="app.js"></script>
+</body>
+</html>
